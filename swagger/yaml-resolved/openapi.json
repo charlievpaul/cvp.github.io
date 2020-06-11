@@ -1,0 +1,465 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "Product Catalog",
+    "description" : "Product catalog from BREWDAT",
+    "contact" : {
+      "email" : "charlie.vpaul@ab-inbev.com"
+    },
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "https://abi-apim-external.azure-api.net/productcatalog",
+    "description" : "Product Catalog endpoint"
+  } ],
+  "paths" : {
+    "/products" : {
+      "get" : {
+        "summary" : "Get products from BREWDAT.",
+        "description" : "Paginated Product Catalog",
+        "operationId" : "getproducts",
+        "parameters" : [ {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Offset values that need to be considered for filter",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Number of records to be displayed from the offset value",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/products"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid input"
+          }
+        }
+      }
+    },
+    "/products/{product_id}" : {
+      "get" : {
+        "summary" : "Get products from BREWDAT.",
+        "description" : "Paginated product catalog by id",
+        "operationId" : "getproductsid",
+        "parameters" : [ {
+          "name" : "product_id",
+          "in" : "path",
+          "description" : "product id of the product",
+          "required" : true,
+          "style" : "simple",
+          "explode" : true,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Offset values that need to be considered for filter",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Number of records to be displayed from the offset value",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/products"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid input"
+          }
+        }
+      }
+    },
+    "/products/{product_name}" : {
+      "get" : {
+        "summary" : "Get products from BREWDAT Cosmos DB by name.",
+        "description" : "Paginated Product Catalog by Product Name",
+        "operationId" : "getproductsname",
+        "parameters" : [ {
+          "name" : "product_name",
+          "in" : "path",
+          "description" : "name of the product",
+          "required" : true,
+          "style" : "simple",
+          "explode" : true,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Offset values that need to be considered for filter",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Number of records to be displayed from the offset value",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/products"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid input"
+          }
+        }
+      }
+    },
+    "/products/{brand_name}" : {
+      "get" : {
+        "summary" : "Get products from BREWDAT.",
+        "description" : "Paginated Product Catalog by Product name",
+        "operationId" : "getproductbrandname",
+        "parameters" : [ {
+          "name" : "brand_name",
+          "in" : "path",
+          "description" : "name of the product",
+          "required" : true,
+          "style" : "simple",
+          "explode" : true,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Offset values that need to be considered for filter",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Number of records to be displayed from the offset value",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/products"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid input"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "products" : {
+        "type" : "object",
+        "properties" : {
+          "product_id" : {
+            "type" : "string",
+            "example" : "12171"
+          },
+          "product_name" : {
+            "type" : "string",
+            "example" : "JUP CAN 2X12X25CL SLK TRA COLL'20"
+          },
+          "product_code" : {
+            "type" : "string",
+            "example" : "79335"
+          },
+          "product_description" : {
+            "type" : "string",
+            "example" : "This is a sample description"
+          },
+          "trademark" : {
+            "type" : "string",
+            "example" : "Sample Trademark"
+          },
+          "product_logo" : {
+            "type" : "string",
+            "example" : "Sample Logo"
+          },
+          "universal_product_code" : {
+            "type" : "string",
+            "example" : "12171"
+          },
+          "european_article_number" : {
+            "type" : "string",
+            "example" : "12171"
+          },
+          "global_trade_item_number" : {
+            "type" : "string",
+            "example" : "12171"
+          },
+          "information_label_text" : {
+            "type" : "string",
+            "example" : "Sample Label"
+          },
+          "descriptive_label_text" : {
+            "type" : "string",
+            "example" : "Sample Label Text Description"
+          },
+          "warning_information_text" : {
+            "type" : "string",
+            "example" : "Sample Warning"
+          },
+          "government_warning_label_text" : {
+            "type" : "string",
+            "example" : "Sample Govt Warning"
+          },
+          "product_volume" : {
+            "type" : "integer",
+            "example" : 8
+          },
+          "product_volume_uom_id" : {
+            "type" : "string",
+            "example" : "12171"
+          },
+          "alcohol_by_volume_percentage" : {
+            "type" : "string",
+            "example" : "12171"
+          },
+          "product_weight  product_weight_uom_id" : {
+            "type" : "string",
+            "example" : "1"
+          },
+          "package_id" : {
+            "type" : "string",
+            "example" : "12171"
+          },
+          "segment_id" : {
+            "type" : "string",
+            "example" : "12171"
+          },
+          "item_id" : {
+            "type" : "string",
+            "example" : "12171"
+          },
+          "brand_id" : {
+            "type" : "string",
+            "example" : "4"
+          },
+          "country_of_origin_iso_country_code" : {
+            "type" : "string",
+            "example" : "USA"
+          },
+          "package_quantity" : {
+            "type" : "string",
+            "example" : "12"
+          },
+          "item_quantity" : {
+            "type" : "string",
+            "example" : "12"
+          },
+          "segment_name" : {
+            "type" : "string",
+            "example" : "Sample Segment Name"
+          },
+          "brand_name" : {
+            "type" : "string",
+            "example" : "JUPILER PILS"
+          },
+          "product_volume_uom" : {
+            "type" : "string",
+            "example" : "2"
+          },
+          "product_weight_uom" : {
+            "type" : "string",
+            "example" : "11"
+          },
+          "parent_product_id" : {
+            "type" : "string",
+            "example" : "79335"
+          },
+          "company_id" : {
+            "type" : "string",
+            "example" : "12171"
+          },
+          "product_business_key" : {
+            "type" : "string",
+            "example" : "12171"
+          },
+          "brand_family_name" : {
+            "type" : "string",
+            "example" : "JUPILER"
+          },
+          "brand_family_id" : {
+            "type" : "string",
+            "example" : "298"
+          },
+          "category" : {
+            "type" : "string",
+            "example" : "BEER"
+          },
+          "product_group_1" : {
+            "type" : "string",
+            "example" : "FINISHED PRODUCTS"
+          },
+          "product_group_2" : {
+            "type" : "string",
+            "example" : "BEVERAGE"
+          },
+          "product_group_3" : {
+            "type" : "string",
+            "example" : "BEER"
+          },
+          "product_group_4" : {
+            "type" : "string",
+            "example" : "PILLS"
+          },
+          "product_category" : {
+            "type" : "string",
+            "example" : "BEER"
+          },
+          "product_record_type" : {
+            "type" : "string",
+            "example" : "Finished Products"
+          },
+          "product_status" : {
+            "type" : "string",
+            "example" : "ACTIVE"
+          },
+          "product_usage" : {
+            "type" : "string",
+            "example" : "Sample Usage"
+          },
+          "parent_product_indicator" : {
+            "type" : "string",
+            "example" : "Y"
+          },
+          "product_type" : {
+            "type" : "string",
+            "example" : "Sample product type"
+          },
+          "product_created_ts" : {
+            "type" : "string",
+            "example" : "Sample time stamp"
+          },
+          "product_packs_per_piece" : {
+            "type" : "string",
+            "example" : "2"
+          },
+          "product_units_per_pack" : {
+            "type" : "string",
+            "example" : "12"
+          },
+          "currency_iso_code" : {
+            "type" : "string",
+            "example" : "EUR"
+          }
+        }
+      }
+    }
+  }
+}
